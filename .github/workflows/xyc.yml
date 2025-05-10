@@ -5,7 +5,7 @@ name: test
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
-  # push:
+  push:
   # schedule:
   #   - cron: "*/5 * * * *"
   workflow_dispatch: # manual
@@ -19,8 +19,10 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - run: pwd && ls -al
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
+      - run: pwd && ls -al
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
