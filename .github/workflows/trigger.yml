@@ -1,9 +1,19 @@
+# File: .github/workflows/trigger.yml
+# Branch: main
+
+name: Trigger Reusable Workflow from testing_workflow
+
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/5 * * * *'  # Every 5 minutes
+  workflow_dispatch:       # Optional: manual trigger for testing
+
+permissions:
+  actions: write
+  contents: read
 
 jobs:
-  call-reusable:
-    uses: ./.github/workflows/test_wf.yml
+  call-test-workflow:
+    uses: sumaparamp/course-gh-actions/.github/workflows/test_wf.yml@testing_workflow
     with:
-      target_branch: testing_workflow
+      branch: testing_workflow
