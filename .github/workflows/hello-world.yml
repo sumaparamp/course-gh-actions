@@ -7,7 +7,10 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    steps: 
-      - name: checkout repo code 
+    steps:
+      # Checks out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-      - run: echo "$(cat testing.txt)"
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
