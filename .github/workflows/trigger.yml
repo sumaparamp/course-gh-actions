@@ -1,22 +1,9 @@
-name: Trigger Testing Workflow
-
 on:
   schedule:
-    - cron: '*/5 * * * *' 
-  workflow_run:
-    workflows: ["testing_workflow"]
-    types:
-      - completed
+    - cron: '*/5 * * * *'
 
 jobs:
-  run-feature-branch:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout specific branch
-        uses: actions/checkout@v4
-        with:
-          ref: testing_workflow
-
-      - name: Run script
-        run: |
-          echo "Running code from feature branch"
+  call-reusable:
+    uses: ./.github/workflows/test_wf.yml
+    with:
+      target_branch: testing_workflow
