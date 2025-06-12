@@ -1,0 +1,27 @@
+name: Checkout and Echo Files
+
+on:
+  workflow_dispatch:  # Allows you to trigger manually
+
+jobs:
+  echo-files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout specific branch
+        uses: actions/checkout@v4
+        with:
+          ref: new_branch_code  # 🔁 Replace with your target branch name
+
+      - name: List files in repo
+        run: ls -la
+
+      - name: Echo contents of all files
+        run: |
+          for file in *; do
+            if [ -f "$file" ]; then
+              echo "------ $file ------"
+              cat "$file"
+              echo ""
+            fi
+          done
