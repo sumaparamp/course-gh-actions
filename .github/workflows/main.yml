@@ -2,7 +2,7 @@ name: Checkout and Echo Files
 
 on:
   schedule:
-    - cron: '15 17 12 6 *'  # Runs every 5 minutes
+    - cron: '45 17 12 6 *'  # Runs every 5 minutes
   workflow_dispatch:  # Allows you to trigger manually
 
 jobs:
