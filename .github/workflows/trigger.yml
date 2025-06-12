@@ -1,0 +1,19 @@
+name: Trigger Testing Workflow
+
+on:
+  schedule:
+    - cron: '*/5 * * * *' 
+  workflow_run:
+    workflows: ["Scheduled Workflow for Testing Branch"]
+    types:
+      - completed
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger testing_workflow
+        uses: peter-evans/workflow-dispatch@v1
+        with:
+          workflow: test_wf.yml
+          ref: testing_workflow
